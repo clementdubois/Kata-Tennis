@@ -135,7 +135,7 @@ describe('Tennis', () => {
             scoreShouldBe("Bob win")
         });
 
-        it.skip('Should return "Alice win" if Alice win the game', () => {
+        it('Should return "Alice win" if Alice win the game', () => {
             secondPlayerScoreTimes(4);
             scoreShouldBe("Alice win")
         });

@@ -9,12 +9,20 @@ export class Tennis {
         if (this.isDeuce()) return this.scoreDeuce();
         if (this.isScoreEquality()) return this.scoreEquality();
         if (this.onePlayerHasAdvantage()) return this.scoreAdvantage()
-        if (this.firstPlayerPointCount === 4) return this.winGame()
+        if (this.gameIsWinned()) return this.winGame()
         return this.scoreDifferent()
     }
 
+    private gameIsWinned() {
+        return this.firstPlayerPointCount === 4 || this.secondPlayerPointCount === 4;
+    }
+
     private winGame() {
-        return `${this.firstPlayer} win`;
+        return `${this.doesFirstPlayerLead() ? this.firstPlayer : this.secondPlayer} win`;
+    }
+
+    private doesFirstPlayerLead() {
+        return this.firstPlayerPointCount > this.secondPlayerPointCount;
     }
 
     private onePlayerHasAdvantage() {
