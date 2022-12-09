@@ -129,5 +129,17 @@ describe('Tennis', () => {
         });
     })
 
+    describe("Win", () => {
+        it('Should return "Bob win" if Bob win the game', () => {
+            firstPlayerScoreTimes(4);
+            scoreShouldBe("Bob win")
+        });
+
+        it.skip('Should return "Alice win" if Alice win the game', () => {
+            secondPlayerScoreTimes(4);
+            scoreShouldBe("Alice win")
+        });
+    })
+
 
 });

@@ -6,16 +6,15 @@ export class Tennis {
     }
 
     score(): string {
-        if (this.onePlayerHasAdvantage()) {
-            return this.scoreAdvantage()
-        }
-        if (this.isDeuce()) {
-            return this.scoreDeuce();
-        }
-        if (this.isScoreEquality()) {
-            return this.scoreEquality();
-        }
+        if (this.isDeuce()) return this.scoreDeuce();
+        if (this.isScoreEquality()) return this.scoreEquality();
+        if (this.onePlayerHasAdvantage()) return this.scoreAdvantage()
+        if (this.firstPlayerPointCount === 4) return this.winGame()
         return this.scoreDifferent()
+    }
+
+    private winGame() {
+        return `${this.firstPlayer} win`;
     }
 
     private onePlayerHasAdvantage() {
