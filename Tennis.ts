@@ -3,11 +3,25 @@ export class Tennis {
     private secondPlayerPointCount: number = 0;
 
     score(): string {
+        if (this.hasFirstPlayerAdvantage()) {
+            return this.scoreAdvantage()
+        }
+        if (this.isDeuce()) {
+            return this.scoreDeuce();
+        }
         if (this.isScoreEquality()) {
-            return this.isDeuce() ? this.scoreDeuce() : this.scoreEquality();
+            return this.scoreEquality();
         }
         return this.scoreDifferent()
 
+    }
+
+    private scoreAdvantage() {
+        return "advantage Bob";
+    }
+
+    private hasFirstPlayerAdvantage() {
+        return this.firstPlayerPointCount === 4 && this.secondPlayerPointCount === 3;
     }
 
     private scoreDeuce() {

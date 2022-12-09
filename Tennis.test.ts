@@ -28,6 +28,11 @@ describe('Tennis', () => {
         secondPlayerScoreTimes(times)
     }
 
+    function firstPlayerHasAdvantage() {
+        firstPlayerScoreTimes(4);
+        secondPlayerScoreTimes(3);
+    }
+
     it('Should return "love all"', () => {
         scoreShouldBe("love all");
     });
@@ -61,5 +66,10 @@ describe('Tennis', () => {
     it('Should return "deuce"', () => {
         playersEqualityScoreTimes(3);
         scoreShouldBe("deuce")
+    });
+
+    it('Should return "advantage Bob"', () => {
+        firstPlayerHasAdvantage();
+        scoreShouldBe("advantage Bob")
     });
 });
