@@ -139,6 +139,30 @@ describe('Tennis', () => {
             secondPlayerScoreTimes(4);
             scoreShouldBe("Alice win")
         });
+
+        it('Should return "Bob win" if Bob win the game advantage', () => {
+            firstPlayerHasAdvantage();
+            firstPlayerScoreTimes(1);
+            scoreShouldBe("Bob win")
+        });
+
+        it('Should return "Alice win" if Alice win the game advantage', () => {
+            secondPlayerHasAdvantage();
+            secondPlayerScoreTimes(1);
+            scoreShouldBe("Alice win")
+        });
+
+        it('Should return "Bob win" if Bob win after Alice advantage', () => {
+            secondPlayerHasAdvantage();
+            firstPlayerScoreTimes(3);
+            scoreShouldBe("Bob win")
+        });
+
+        it('Should return "Alice win" if Alice win after Bob advantage', () => {
+            firstPlayerHasAdvantage();
+            secondPlayerScoreTimes(3);
+            scoreShouldBe("Alice win")
+        });
     })
 
 

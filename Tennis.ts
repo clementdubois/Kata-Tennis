@@ -14,7 +14,7 @@ export class Tennis {
     }
 
     private gameIsWinned() {
-        return this.firstPlayerPointCount === 4 || this.secondPlayerPointCount === 4;
+        return this.firstPlayerPointCount >= 4 || this.secondPlayerPointCount >= 4;
     }
 
     private winGame() {
