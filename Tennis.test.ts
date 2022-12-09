@@ -26,9 +26,13 @@ describe('Tennis', () => {
         scoreShouldBe("15 love")
     });
 
-
     it('Should return "30 love"', () => {
         firstPlayerScoreTimes(2);
         scoreShouldBe("30 love")
+    });
+
+    it('Should return "40 love"', () => {
+        firstPlayerScoreTimes(3);
+        scoreShouldBe("40 love")
     });
 });
