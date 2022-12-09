@@ -27,7 +27,7 @@ export class Tennis {
     }
 
     private hasFirstPlayerAdvantage() {
-        return this.firstPlayerPointCount === 4 && this.secondPlayerPointCount === 3;
+        return (this.firstPlayerPointCount - this.secondPlayerPointCount) === 1;
     }
 
     private scoreDeuce() {
