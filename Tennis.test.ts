@@ -11,13 +11,24 @@ describe('Tennis', () => {
         expect(score).toEqual(expectedScore);
     }
 
+    function firstPlayerScoreTimes(times: number) {
+        for (let i = 0; i < times; i++) {
+            tennis.firstPlayerScore();
+        }
+    }
+
     it('Should return "love all"', () => {
-        // THEN
         scoreShouldBe("love all");
     });
 
     it('Should return "15 love"', () => {
-        tennis.firstPlayerScore();
+        firstPlayerScoreTimes(1)
         scoreShouldBe("15 love")
+    });
+
+
+    it('Should return "30 love"', () => {
+        firstPlayerScoreTimes(2);
+        scoreShouldBe("30 love")
     });
 });
