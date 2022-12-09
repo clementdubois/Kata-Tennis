@@ -1,12 +1,23 @@
 import {Tennis} from "./Tennis";
 
 describe('Tennis', () => {
-  it('Should return "love all"', () => {
-    // GIVEN
-    const tennis = new Tennis();
-    // WHEN
-    const score = tennis.score();
-    // THEN
-    expect(score).toEqual("love all");
-  });
+    let tennis: Tennis;
+    beforeEach(() => {
+        tennis = new Tennis();
+    });
+
+    function scoreShouldBe(expectedScore: string) {
+        const score = tennis.score();
+        expect(score).toEqual(expectedScore);
+    }
+
+    it('Should return "love all"', () => {
+        // THEN
+        scoreShouldBe("love all");
+    });
+
+    it('Should return "15 love"', () => {
+        tennis.firstPlayerScore();
+        scoreShouldBe("15 love")
+    });
 });
