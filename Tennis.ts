@@ -1,17 +1,33 @@
 export class Tennis {
-    private firstPlayerScoreCount: number = 0;
-    private secondPlayerScoreCount: number = 0;
+    private firstPlayerPointCount: number = 0;
+    private secondPlayerPointCount: number = 0;
 
     score(): string {
-        const firstPlayerScore = Tennis.scoreByCount(this.firstPlayerScoreCount);
-        if (this.firstPlayerHasScored()) {
-            return `${firstPlayerScore} ${Tennis.scoreByCount(this.secondPlayerScoreCount)}`
+        if (this.isScoreEquality()) {
+            return this.isDeuce() ? this.scoreDeuce() : this.scoreEquality();
         }
-        return `${firstPlayerScore} all`
+        return this.scoreDifferent()
+
     }
 
-    private firstPlayerHasScored() {
-        return this.firstPlayerScoreCount > 0;
+    private scoreDeuce() {
+        return "deuce";
+    }
+
+    private isDeuce() {
+        return this.firstPlayerPointCount === 3 && this.secondPlayerPointCount === 3;
+    }
+
+    private isScoreEquality() {
+        return this.firstPlayerPointCount === this.secondPlayerPointCount;
+    }
+
+    private scoreDifferent() {
+        return `${Tennis.scoreByCount(this.firstPlayerPointCount)} ${Tennis.scoreByCount(this.secondPlayerPointCount)}`;
+    }
+
+    private scoreEquality() {
+        return `${Tennis.scoreByCount(this.firstPlayerPointCount)} all`;
     }
 
     private static scoreByCount(scoreCount: number) {
@@ -21,7 +37,11 @@ export class Tennis {
         return "40";
     }
 
-    firstPlayerScore() {
-        this.firstPlayerScoreCount++;
+    firstPlayerWinPoint(): void {
+        this.firstPlayerPointCount++;
+    }
+
+    secondPlayerWinPoint(): void {
+        this.secondPlayerPointCount++;
     }
 }
