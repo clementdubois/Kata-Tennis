@@ -2,8 +2,11 @@ export class Tennis {
     private firstPlayerPointCount: number = 0;
     private secondPlayerPointCount: number = 0;
 
+    constructor(private firstPlayer: string, private secondPlayer: string) {
+    }
+
     score(): string {
-        if (this.hasFirstPlayerAdvantage()) {
+        if (this.onePlayerHasAdvantage()) {
             return this.scoreAdvantage()
         }
         if (this.isDeuce()) {
@@ -13,11 +16,14 @@ export class Tennis {
             return this.scoreEquality();
         }
         return this.scoreDifferent()
+    }
 
+    private onePlayerHasAdvantage() {
+        return Math.abs(this.firstPlayerPointCount - this.secondPlayerPointCount) === 1 && this.firstPlayerPointCount >= 3;
     }
 
     private scoreAdvantage() {
-        return "advantage Bob";
+        return `advantage ${this.hasFirstPlayerAdvantage() ? this.firstPlayer : this.secondPlayer}`;
     }
 
     private hasFirstPlayerAdvantage() {
@@ -29,7 +35,7 @@ export class Tennis {
     }
 
     private isDeuce() {
-        return this.firstPlayerPointCount === 3 && this.secondPlayerPointCount === 3;
+        return this.firstPlayerPointCount >= 3 && this.isScoreEquality();
     }
 
     private isScoreEquality() {

@@ -3,7 +3,7 @@ import {Tennis} from "./Tennis";
 describe('Tennis', () => {
     let tennis: Tennis;
     beforeEach(() => {
-        tennis = new Tennis();
+        tennis = new Tennis("Bob", "Alice");
     });
 
     function scoreShouldBe(expectedScore: string) {
@@ -31,6 +31,11 @@ describe('Tennis', () => {
     function firstPlayerHasAdvantage() {
         firstPlayerScoreTimes(4);
         secondPlayerScoreTimes(3);
+    }
+
+    function secondPlayerHasAdvantage() {
+        firstPlayerScoreTimes(3);
+        secondPlayerScoreTimes(4);
     }
 
     it('Should return "love all"', () => {
@@ -71,5 +76,22 @@ describe('Tennis', () => {
     it('Should return "advantage Bob"', () => {
         firstPlayerHasAdvantage();
         scoreShouldBe("advantage Bob")
+    });
+
+    it('Should return "advantage Alice"', () => {
+        secondPlayerHasAdvantage();
+        scoreShouldBe("advantage Alice")
+    });
+
+    it('Should return "deuce" after Alice advantage lost', () => {
+        secondPlayerHasAdvantage();
+        firstPlayerScoreTimes(1);
+        scoreShouldBe("deuce")
+    });
+
+    it('Should return "deuce" after Bob advantage lost', () => {
+        firstPlayerHasAdvantage();
+        secondPlayerScoreTimes(1);
+        scoreShouldBe("deuce")
     });
 });
